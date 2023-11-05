@@ -31,6 +31,7 @@ func main() {
 	}
 
 	switch {
+
 	case *add:
 		task, err := getInput(os.Stdin, flag.Args()...)
 		if err != nil {
@@ -43,6 +44,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
+
 	case *complete > 0:
 		err := todos.Complete(*complete)
 		if err != nil {
@@ -54,6 +56,7 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
+
 	case *del > 0:
 		err := todos.Delete(*del)
 		if err != nil {
@@ -65,8 +68,10 @@ func main() {
 			fmt.Fprintln(os.Stderr, err.Error())
 			os.Exit(1)
 		}
+
 	case *list:
 		todos.Print()
+		
 	default:
 		fmt.Fprintln(os.Stdout, "invalid command")
 		os.Exit(0)
